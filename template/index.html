@@ -9,25 +9,25 @@
 
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="sidebar-collapsed">
     <header class="dashboard-header">
         <a href="" class="dashboard-logo logo-collapsed">
             <div class="logo-circle"></div>
             <h1 class="logo-text">Appico Dashboard</h1>
         </a>
         <nav class="section-nav">
-            <ul class="horizonal-nav">
-                <li class="nav-item selected">Overview</li>
-                <li class="nav-item">Campaigns</li>
-                <li class="nav-item">Analytics</li>
+            <ul class="horizonal-nav flex-container flex-items-stretch">
+                <li class="nav-item selected"><a href="#">Overview</a></li>
+                <li class="nav-item"><a href="#">Campaigns</a></li>
+                <li class="nav-item"><a href="#">Analytics</a></li>
             </ul>
         </nav>
         <button class="btn-solid btn-primary dashboard-premium">Premium</button>
     </header>
     <nav class="dashboard-nav">
         <ul class="vertical-nav nav-collapsed">
-            <li class="nav-item">
-                <a href="#">
+            <li class="nav-item selected">
+                <a href="#" >
                     <svg aria-hidden="true" role="img"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="nav-icon svg-icon icon-md"><path fill="currentColor" d="M288 32C128.94 32 0 160.94 0 320c0 52.8 14.25 102.26 39.06 144.8 5.61 9.62 16.3 15.2 27.44 15.2h443c11.14 0 21.83-5.58 27.44-15.2C561.75 422.26 576 372.8 576 320c0-159.06-128.94-288-288-288zm0 64c14.71 0 26.58 10.13 30.32 23.65-1.11 2.26-2.64 4.23-3.45 6.67l-9.22 27.67c-5.13 3.49-10.97 6.01-17.64 6.01-17.67 0-32-14.33-32-32S270.33 96 288 96zM96 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm48-160c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm246.77-72.41l-61.33 184C343.13 347.33 352 364.54 352 384c0 11.72-3.38 22.55-8.88 32H232.88c-5.5-9.45-8.88-20.28-8.88-32 0-33.94 26.5-61.43 59.9-63.59l61.34-184.01c4.17-12.56 17.73-19.45 30.36-15.17 12.57 4.19 19.35 17.79 15.17 30.36zm14.66 57.2l15.52-46.55c3.47-1.29 7.13-2.23 11.05-2.23 17.67 0 32 14.33 32 32s-14.33 32-32 32c-11.38-.01-20.89-6.28-26.57-15.22zM480 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z" ></path></svg>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -64,8 +64,8 @@
         </button>
     </nav>
     <main class="dashboard-content">
-        <header class="section-header">
-            <h2 class="section-title">Data overview</h2>
+        <header class="section-header flex-container flex-items-center flex-content-between">
+            <h2 class="section-title fs-4 fw-bold">Data overview</h2>
             <div class="section-overview">
                 <div class="overview-progress"></div>
                 <p class="overview-info text-grey"><span class="text-dark">643</span> insertions needed to complete</p>
@@ -79,12 +79,17 @@
                     <div class="statics-chart-container chart-primary flex-container">
                         <div class="two-third">
                             <p class="chart-general-info">
-                                9401 <small class="text-gre">Followers</small>
+                                9401 <small class="text-grey">Followers</small>
                             </p>
                             <div class="bar-chart"></div>
                         </div>
                         <div class="one-third">
-                            <div class="ring-chart"></div>
+                            <div class="donut-chart">
+                                <svg viewBox="0 0 40 40" class="donut">
+                                    <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954"></circle>
+                                    <circle class="donut-segment" cx="20" cy="20" r="15.91549430918954" ></circle>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,7 +103,12 @@
                             <div class="bar-chart"></div>
                         </div>
                         <div class="one-third">
-                            <div class="ring-chart"></div>
+                            <div class="donut-chart">
+                                <svg viewBox="0 0 40 40" class="donut">
+                                    <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954"></circle>
+                                    <circle class="donut-segment" cx="20" cy="20" r="15.91549430918954" ></circle>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +130,7 @@
             </section>
 
             <section class="bottom-section-container">
-                <h4 class="section-title">Support Request</h4>
+                <h4 class="section-title fs-5 fw-bold">Support Request</h4>
                 <table class="dashboard-table table-stripless">
                     <thead>
                         <tr>
@@ -171,7 +181,7 @@
 
         </div>
 
-        <footer class="section-footer">
+        <footer class="section-footer flex-container flex-content-between flex-items-center">
             <p class="section-data-view text-grey">Showing <span class="text-dark">1</span> to <span class="text-dark">20</span> of 25 elements</p>
             <div class="section-pagination">Page <span class="label-primary">1</span> ... <button class="btn-line btn-grey">1</button></div>
         </footer>
