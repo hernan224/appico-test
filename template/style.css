@@ -543,16 +543,16 @@ small {
     margin: 0 3rem;
 }
 
-.horizonal-nav {
+.horizontal-nav {
     display: flex;
     justify-content: space-around;
     align-items: stretch;
     padding-left: 18%;
 }
-.horizonal-nav .nav-item {
+.horizontal-nav .nav-item {
     margin: 0 5%;
 }
-.horizonal-nav a {
+.horizontal-nav a {
     display: flex;
     align-items: center;
     height: var(--dashboard-header-height);
@@ -561,8 +561,8 @@ small {
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
 }
-.horizonal-nav a:hover,
-.horizonal-nav .selected a {
+.horizontal-nav a:hover,
+.horizontal-nav .selected a {
     color: var(--color-primary);
     font-weight: 700;
     border-bottom: 2px solid var(--color-primary);
@@ -645,18 +645,26 @@ small {
     margin-left: 0.75rem;
 }
 
-.toggle-collapse {
+/* Toggle collapse & mobile nav btns */
+.mobile-nav-toggle {
+    display: none;
+}
+
+.toggle-collapse,
+.mobile-nav-toggle {
     background: none;
     align-self: center;
     padding: 0.75rem;
 }
-.toggle-collapse .svg-icon {
+.toggle-collapse .svg-icon,
+.mobile-nav-toggle .svg-icon {
     color: var(--color-grey-light);
     width: 2rem;
     height: 2rem;
     transition: all 0.3s ease;
 }
-.toggle-collapse:hover .svg-icon {
+.toggle-collapse:hover .svg-icon,
+.mobile-nav-toggle:hover .svg-icon {
     color: var(--color-grey-dark);
     transition: all 0.3s ease;
 }
@@ -784,10 +792,13 @@ small {
     stroke-dashoffset: 25;
     stroke-linecap: round;
 }
+.donut-chart-container .chart-general-info {
+    display: none;
+}
 
 /* Overview Progress */
 .overview-progress {
-    width: 100%;
+    width: 22vw;
     max-width: 280px;
     position: relative;
     display: block;
@@ -831,4 +842,190 @@ small {
 }
 .bar-chart .chart-item:nth-child(even) .bar {
     opacity: 0.4;
+}
+
+/* Media Query */
+/* 1024 and below */
+@media screen and (max-width: 1024px) {
+    :root {
+        --dahsboard-sidebar-width: 156px;
+    }
+    .statics-chart-container {
+        flex-direction: column-reverse;
+    }
+    .bar-chart-container,
+    .donut-chart-container {
+        width: 100%;
+        padding: 0;
+    }
+    .donut-chart-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .bar-chart-container .chart-general-info {
+        display: none;
+    }
+    .donut-chart-container .chart-general-info {
+        display: block;
+    }
+
+    .results-info-section .terms-list li span {
+        display: block;
+        margin: 0.25rem 0;
+    }
+}
+/* 850 and below */
+@media screen and (max-width: 850px) {
+    /* Side navigation always collapsed */
+    :root {
+        --dahsboard-sidebar-width: 72px;
+    }
+    .toggle-collapse {
+        display: none;
+    }
+    .vertical-nav .nav-text,
+    .logo-text {
+        position: absolute;
+        text-indent: -999em;
+        width: 0;
+        visibility: hidden;
+    }
+
+    .dashboard-logo {
+        margin-right: auto;
+    }
+    .dashboard-premium {
+        margin: 0 0 0 3%;
+    }
+
+    /* Show mobile navigation */
+    .mobile-nav-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .section-nav {
+        width: auto;
+        margin: 0 3%;
+        position: relative;
+        order: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .section-nav .horizontal-nav {
+        display: none;
+        flex-direction: column;
+        width: 180px;
+        padding: 0;
+        position: absolute;
+        top: calc(var(--dashboard-header-height) - 3px);
+        right: 1rem;
+        z-index: 150;
+        background-color: white;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        box-shadow: 2px 2px 8px rgba(220, 220, 220, 0.4);
+    }
+    .section-nav .horizontal-nav::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        right: 3px;
+        width: 12px;
+        height: 12px;
+        background-color: white;
+        border-radius: 2px;
+        transform: rotate(45deg);
+        border-top: 1px solid var(--border-color);
+        border-left: 1px solid var(--border-color);
+    }
+    .section-nav .horizontal-nav .nav-item {
+        margin: 0.5rem 0;
+    }
+    .section-nav .horizontal-nav {
+        border-bottom: none;
+        border-right: 2px solid transparent;
+    }
+    .section-nav .horizontal-nav a:hover,
+    .section-nav .horizontal-nav .selected a {
+        border-bottom: none;
+        border-right: 2px solid var(--color-primary);
+    }
+
+    .mobile-nav-visible .section-nav .horizontal-nav {
+        display: flex;
+    }
+    .mobile-nav-visible .mobile-nav-toggle .svg-icon  {
+        color: var(--color-dark);
+    }
+
+    /* Section header & footer */
+    .section-header,
+    .section-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .section-overview {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        width: 100%;
+        padding-top: var(--space-2);
+    }
+    .overview-progress {
+        margin: var(--space-1) 0 0;
+        width: 40vw;
+    }
+    .section-pagination {
+        margin: var(--space-2) 0 0;
+    }
+
+    .results-info-section {
+        flex-wrap: wrap;
+    }
+    .results-info-section .one-fifth {
+        width: 100%;
+        align-self: flex-start;
+    }
+    .results-info-section .two-fifth {
+        width: 50%;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .results-info-section .terms-list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+    .results-info-section .second-info {
+        border-right: none;
+    }
+    .results-info-section .terms-list li  {
+        padding: var(--space-2) var(--space-4);
+    }
+    .results-info-section .terms-list li:first-of-type {
+        padding-left: 0;
+    }
+    .results-info-section .terms-list li:last-of-type {
+        padding-right: 0;
+    }
+}
+
+/* 500 and below */
+@media screen and (max-width: 500px) {
+    :root {
+        --dahsboard-sidebar-width: 60px;
+    }
+    .results-info-section .two-fifth {
+        width: 100%;
+        border-right: none;
+    }
+    .results-info-section .terms-list {
+        flex-direction: column;
+    }
+    .results-info-section .terms-list li  {
+        padding: var(--space-2) 0;
+    }
+
 }

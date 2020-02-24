@@ -16,11 +16,14 @@
             <h1 class="logo-text">Appico Dashboard</h1>
         </a>
         <nav class="section-nav">
-            <ul class="horizonal-nav">
+            <ul class="horizontal-nav">
                 <li class="nav-item selected"><a href="#">Overview</a></li>
                 <li class="nav-item"><a href="#">Campaigns</a></li>
                 <li class="nav-item"><a href="#">Analytics</a></li>
             </ul>
+            <button class="mobile-nav-toggle">
+                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 512" class="svg-icon"><path fill="currentColor" d="M32 224c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zM0 136c0 17.7 14.3 32 32 32s32-14.3 32-32-14.3-32-32-32-32 14.3-32 32zm0 240c0 17.7 14.3 32 32 32s32-14.3 32-32-14.3-32-32-32-32 14.3-32 32z" ></path></svg>
+            </button>
         </nav>
         <button class="btn btn-solid btn-primary dashboard-premium">Premium</button>
     </header>
@@ -76,7 +79,7 @@
                 <div class="result-info-container first-info flex-content two-fifth p-a-5">
                     <h4 class="inner-title h6 m-b-4">General results</h4>
                     <div class="statics-chart-container chart-primary flex-container">
-                        <div class="two-third p-r-5">
+                        <div class="two-third p-r-5 bar-chart-container">
                             <p class="chart-general-info">
                                 <span class="h4">9401</span> <span class="text-grey fs-7">Followers</span>
                             </p>
@@ -131,7 +134,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="one-third">
+                        <div class="one-third donut-chart-container">
+                            <p class="chart-general-info">
+                                <span class="h4">9401</span> <span class="text-grey fs-7">Followers</span>
+                            </p>
                             <div class="donut-chart">
                                 <svg viewBox="0 0 40 40" class="donut">
                                     <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954"></circle>
@@ -144,7 +150,7 @@
                 <div class="result-info-container second-info flex-content two-fifth p-a-5">
                     <h4 class="inner-title h6 m-b-4">Ratings by category</h4>
                     <div class="statics-chart-container chart-secondary flex-container">
-                        <div class="two-third p-r-5">
+                        <div class="two-third p-r-5 bar-chart-container">
                             <p class="chart-general-info">
                                 <span class="h4">3900</span> <span class="text-grey fs-7">Followers</span>
                             </p>
@@ -199,7 +205,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="one-third">
+                        <div class="one-third donut-chart-container">
+                            <p class="chart-general-info">
+                                <span class="h4">3900</span> <span class="text-grey fs-7">Followers</span>
+                            </p>
                             <div class="donut-chart">
                                 <svg viewBox="0 0 40 40" class="donut">
                                     <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954"></circle>
