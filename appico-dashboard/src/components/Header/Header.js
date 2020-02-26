@@ -1,6 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react';
+import {Link} from '@reach/router';
 
 import SvgIcon from '../SvgIcon/SvgIcon';
+import HeaderLink from './HeaderLink/HeaderLink';
 
 import './Header.css';
 
@@ -40,7 +42,8 @@ const Header = (props) => {
     // Create navigation
     let navigation = null;
     if (props.nav) {
-        const links = props.nav.map((link, index) => <li key={index} className="nav-item"><a href={link.path}>{link.name}</a></li>);
+        const links = props.nav.map((link, index) => <HeaderLink key={index} path={link.path}  name={link.name}/>);
+
         navigation = (
             <nav className="section-nav" ref={navNode}>
                 <ul className="horizontal-nav">
@@ -61,10 +64,10 @@ const Header = (props) => {
 
     return (
         <header className={headerClasses}>
-            <a href="#" className="dashboard-logo logo-collapsed">
+            <Link to="/" className="dashboard-logo logo-collapsed">
                 <div className="logo-circle"></div>
                 <h1 className="logo-text">Appico Dashboard</h1>
-            </a>
+            </Link>
             {navigation}
             {premiumBtn}
         </header>

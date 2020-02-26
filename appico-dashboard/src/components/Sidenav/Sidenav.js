@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SidenavLink from './SidenavLink/SidenavLink';
 import SvgIcon from '../SvgIcon/SvgIcon';
 
 import './Sidenav.css';
@@ -9,12 +10,10 @@ const Sidenav = (props) => {
     let navigation = null;
     if (props.nav) {
         const navItems = props.nav.map((item, index) => (
-            <li key={index} className="nav-item">
-                <a href={item.path} >
-                    <SvgIcon classname="nav-icon" icon={item.icon} />
-                    <span className="nav-text">{item.name}</span>
-                </a>
-            </li>
+            <SidenavLink key={index}
+                        path={item.path}
+                        icon={item.icon}
+                        name={item.name} />
         ));
 
         navigation = <ul className="vertical-nav nav-collapsed">{navItems}</ul>
