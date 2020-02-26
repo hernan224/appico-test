@@ -1,7 +1,58 @@
 import React, { Component } from 'react';
 
+import DonutChart from '../../components/Charts/DonutChart/DonutChart';
+import BarsChart from '../../components/Charts/BarsChart/BarsChart';
+
 class PageDashboard extends Component {
+
+    state = {
+        chartData1: null,
+        chartData2: null,
+        termsData: {
+            term1: 85.52,
+            term2: 25.48,
+            term3: 33.68,
+            term4: 16.99
+        },
+        tableData: null,
+    };
+
+    // Create dataset for bars charts
+    createChartDataset() {
+        const keysArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        let chartData1 = [];
+        let chartData2 = [];
+
+        keysArray.forEach(key => {
+            chartData1[key] = +Math.random().toFixed(2);
+            chartData2[key] = +Math.random().toFixed(2);
+        });
+
+        this.setState({
+            chartData1: Object.assign({}, chartData1),
+            chartData2: Object.assign({}, chartData2)
+        });
+    }
+
+    componentDidMount() {
+        // Set chartbar dataset
+        this.createChartDataset();
+    }
+
     render() {
+
+        // Create terms list
+        let termsList = [];
+        for (let term in this.state.termsData) {
+            const index = Math.floor(Math.random() * 100000);
+            termsList.push((
+                <li className="p-t-2 p-b-2" key={index}>
+                    <span className="text-grey text-uppercase m-r-3">{term}</span>
+                    <span className="m-l-3">{this.state.termsData[term]}</span>
+                </li>
+            ));
+        }
+
         return (
             <main className="dashboard-content">
                 <header className="section-header flex-container flex-items-center flex-content-between">
@@ -20,67 +71,13 @@ class PageDashboard extends Component {
                             <p className="chart-general-info">
                             <span className="h4">9401</span> <span className="text-grey fs-7">Followers</span>
                             </p>
-                            <div className="bar-chart m-t-2">
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '60%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">a</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '35%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">b</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '80%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">c</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '100%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">d</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '23%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">e</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '37%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">f</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '59%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">g</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '25%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">h</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '93%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">i</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '81%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">j</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '15%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">k</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '75%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">l</span>
-                            </div>
-                            </div>
+                            <BarsChart classname="m-t-2" data={this.state.chartData1} color="#0077FF"/>
                         </div>
                         <div className="one-third donut-chart-container">
                             <p className="chart-general-info">
                             <span className="h4">9401</span> <span className="text-grey fs-7">Followers</span>
                             </p>
-                            <div className="donut-chart">
-                            <svg viewBox="0 0 40 40" className="donut">
-                                <circle className="donut-ring" cx={20} cy={20} r="15.91549430918954" />
-                                <circle className="donut-segment" cx={20} cy={20} r="15.91549430918954" />
-                            </svg>
-                            </div>
+                            <DonutChart value={0.75} color="#0077FF" />
                         </div>
                         </div>
                     </div>
@@ -91,88 +88,19 @@ class PageDashboard extends Component {
                             <p className="chart-general-info">
                             <span className="h4">3900</span> <span className="text-grey fs-7">Followers</span>
                             </p>
-                            <div className="bar-chart m-t-2">
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '60%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">a</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '35%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">b</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '80%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">c</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '100%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">d</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '23%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">e</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '37%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">f</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '59%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">g</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '25%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">h</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '93%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">i</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '81%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">j</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '15%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">k</span>
-                            </div>
-                            <div className="chart-item">
-                                <span className="bar" style={{height: '75%'}} />
-                                <span className="fs-7 text-grey-light m-t-1">l</span>
-                            </div>
-                            </div>
+                            <BarsChart classname="m-t-2" data={this.state.chartData2} color="#F0166D"/>
                         </div>
                         <div className="one-third donut-chart-container">
                             <p className="chart-general-info">
                             <span className="h4">3900</span> <span className="text-grey fs-7">Followers</span>
                             </p>
-                            <div className="donut-chart">
-                            <svg viewBox="0 0 40 40" className="donut">
-                                <circle className="donut-ring" cx={20} cy={20} r="15.91549430918954" />
-                                <circle className="donut-segment" cx={20} cy={20} r="15.91549430918954" />
-                            </svg>
-                            </div>
+                            <DonutChart value={0.48} color="#F0166D" />
                         </div>
                         </div>
                     </div>
                     <div className="flex-content one-fifth p-a-5">
                         <ul className="terms-list fs-7 fw-semibold text-center">
-                        <li className="p-t-2 p-b-2">
-                            <span className="text-grey text-uppercase m-r-3">Term 1</span>
-                            <span className="m-l-3">85.08</span>
-                        </li>
-                        <li className="p-t-2 p-b-2">
-                            <span className="text-grey text-uppercase m-r-3">Term 2</span>
-                            <span className="m-l-3">1.76</span>
-                        </li>
-                        <li className="p-t-2 p-b-2">
-                            <span className="text-grey text-uppercase m-r-3">Term 3</span>
-                            <span className="m-l-3">33.42</span>
-                        </li>
-                        <li className="p-t-2 p-b-2">
-                            <span className="text-grey text-uppercase m-r-3">Term 4</span>
-                            <span className="m-l-3">75.11</span>
-                        </li>
+                            {termsList}
                         </ul>
                     </div>
                     </section>

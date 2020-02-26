@@ -1,0 +1,32 @@
+
+
+/* Donut chart */
+.donutChart {
+    --percentage-on: 60;
+    --percentage-off: 40;
+    --chart-color: var(--color-primary);
+    --chart-width: 4;
+
+    max-width: 120px;
+    max-height: 120px;
+}
+.donutChart .donut {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+}
+.donutChart .donutRing {
+    fill: transparent;
+    stroke-width: var(--chart-width);
+    stroke: var(--chart-color);
+    opacity: 0.25;
+}
+.donutChart .donutSegment {
+    transform-origin: center;
+    fill: transparent;
+    stroke: var(--chart-color);
+    stroke-width: var(--chart-width);
+    stroke-dasharray: var(--percentage-on), var(--percentage-off);
+    stroke-dashoffset: 25;
+    stroke-linecap: round;
+}

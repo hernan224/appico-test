@@ -1,0 +1,28 @@
+/* Bar chart */
+.barChart {
+    --chart-color: var(--color-primary);
+    --bar-width: 10px;
+
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.barChart .chartItem {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.barChart .chartItem .bar {
+    width: var(--bar-width);
+    display: block;
+    background-color: var(--chart-color);
+    border-radius: 2px;
+    opacity: 1;
+}
+.barChart .chartItem:nth-child(even) .bar {
+    opacity: 0.4;
+}

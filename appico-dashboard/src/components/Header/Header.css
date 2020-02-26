@@ -166,8 +166,13 @@
         border-bottom: none;
         border-right: 2px solid transparent;
     }
+    .section-nav .horizontal-nav a{
+        border-bottom: none;
+        border-right: 2px solid transparent;
+    }
     .section-nav .horizontal-nav a:hover,
     .section-nav .horizontal-nav .selected a {
+        color: var(--color-primary);
         border-bottom: none;
         border-right: 2px solid var(--color-primary);
     }

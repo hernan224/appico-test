@@ -9,12 +9,12 @@ import './App.css';
 function App() {
   // State
     const [collapsedSidebar, setCollapsedSidebar] = useState(true);
-    const [mobileMenuVisible, setMobileMenuvisible] = useState(false);
+
 
     // Global css classes
     const navClasses = [];
     if (collapsedSidebar) navClasses.push('sidebar-collapsed');
-    if (mobileMenuVisible) navClasses.push('mobile-nav-visible');
+    // if (mobileMenuVisible) navClasses.push('');
 
     // Header navigation object
     const headerNav = [
@@ -34,11 +34,11 @@ function App() {
 
 
     const collapseSidebarHandler = () => setCollapsedSidebar(!collapsedSidebar);
-    const showMobileNavHandler = () => setMobileMenuvisible(!mobileMenuVisible);
+
 
     return (
         <div className={navClasses.join(' ')}>
-            <Header nav={headerNav} premium={true} togglemenu={showMobileNavHandler} />
+            <Header nav={headerNav} premium={true} />
             <Sidenav nav={sidebarNav} toggle={true} togglecollapse={collapseSidebarHandler} />
             <PageDashboard />
         </div>
