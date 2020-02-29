@@ -42,7 +42,7 @@ const Header = (props) => {
     // Create navigation
     let navigation = null;
     if (props.nav) {
-        const links = props.nav.map((link, index) => <HeaderLink key={index} path={link.path}  name={link.name}/>);
+        const links = props.nav.map((link, index) => <HeaderLink key={index} path={link.path}  name={link.name} state={link.state}/>);
 
         navigation = (
             <nav className="section-nav" ref={navNode}>

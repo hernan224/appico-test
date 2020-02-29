@@ -22,13 +22,12 @@ function App() {
     // Global css classes
     const navClasses = [];
     if (collapsedSidebar) navClasses.push('sidebar-collapsed');
-    // if (mobileMenuVisible) navClasses.push('');
 
     // Header navigation object
     const headerNav = [
         {name: 'Overview', path: '/'},
-        {name: 'Campaigns', path: 'dashboard/campaigns'},
-        {name: 'Analytics', path: 'dashboard/analitycs'}
+        {name: 'Campaigns', path: 'dashboard/campaigns', state: {sectionTitle: 'Data Campaigns'}},
+        {name: 'Analytics', path: 'dashboard/analitycs', state: {sectionTitle: 'Data Analytics'}}
     ];
 
     // Sidebar navigation object

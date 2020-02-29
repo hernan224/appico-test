@@ -9,14 +9,18 @@ const HeaderLink = props => {
     return (
         <li className={navItemClasses}>
             <Link to={props.path}
-                getProps={({isCurrent}) => setItemActive(isCurrent)}>{props.name}</Link>
+                getProps={({isCurrent}) => setItemActive(isCurrent)}
+                state={props.state}>{props.name}
+
+            </Link>
         </li>
     );
 };
 
 HeaderLink.propTypes = {
     path: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    state: PropTypes.object
 };
 
 export default HeaderLink;
