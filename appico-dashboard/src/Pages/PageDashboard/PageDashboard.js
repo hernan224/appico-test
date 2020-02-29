@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import DonutChart from '../../components/Charts/DonutChart/DonutChart';
-import BarsChart from '../../components/Charts/BarsChart/BarsChart';
+import DashboardChartsSection from './DashboardChartsSection/DashboardChartsSection';
 import DashboardTable from '../../components/DashboardTable/DashboardTable';
 import Loading from '../../components/Loading/Loading';
 import Pagination from '../../components/Pagination/Pagination';
@@ -51,7 +50,7 @@ class PageDashboard extends Component {
     // Get data from external source
     getTableData(page = this.state.pagination.current, limit = this.state.pagination.limit) {
         const _start = (page - 1) * limit;
-        console.log('_start: ', _start);
+
         const requetUrl = `https://jsonplaceholder.typicode.com/users?_limit=${limit}&_start=${_start}`;
 
         this.setState({isLoading: true});
@@ -157,7 +156,6 @@ class PageDashboard extends Component {
     }
 
     render() {
-        console.log(this.getSearchParams());
         // Create terms list
         let termsList = [];
         for (let term in this.state.termsData) {
@@ -196,45 +194,33 @@ class PageDashboard extends Component {
                 </header>
                 <div className="main-content-container">
                     <section className="results-info-section top-section-container flex-container flex-items-stretch">
-                    <div className="result-info-container first-info flex-content two-fifth p-a-5">
-                        <h4 className="inner-title h6 m-b-4">General results</h4>
-                        <div className="statics-chart-container chart-primary flex-container">
-                        <div className="two-third p-r-5 bar-chart-container">
-                            <p className="chart-general-info">
-                            <span className="h4">9401</span> <span className="text-grey fs-7">Followers</span>
-                            </p>
-                            <BarsChart classname="m-t-2" data={this.state.chartData1} color="#0077FF"/>
+                        <div className="result-info-container first-info flex-content two-fifth p-a-5">
+                            <h4 className="inner-title h6 m-b-4">General results</h4>
+                            <DashboardChartsSection
+                                classname="chart-primary"
+                                totalvalue={9401}
+                                donutchartvalue={+Math.random().toFixed(2)}
+                                barschartvalue={this.state.chartData1}
+                                chartscolor="#0077FF"
+                            />
+
                         </div>
-                        <div className="one-third donut-chart-container">
-                            <p className="chart-general-info">
-                            <span className="h4">9401</span> <span className="text-grey fs-7">Followers</span>
-                            </p>
-                            <DonutChart value={+Math.random().toFixed(2)} color="#0077FF" />
+                        <div className="result-info-container second-info flex-content two-fifth p-a-5">
+                            <h4 className="inner-title h6 m-b-4">Ratings by category</h4>
+                            <DashboardChartsSection
+                                classname="chart-secondary"
+                                totalvalue={3900}
+                                donutchartvalue={+Math.random().toFixed(2)}
+                                barschartvalue={this.state.chartData2}
+                                chartscolor="#F0166D"
+                            />
+
                         </div>
+                        <div className="flex-content one-fifth p-a-5">
+                            <ul className="terms-list fs-7 fw-semibold text-center">
+                                {termsList}
+                            </ul>
                         </div>
-                    </div>
-                    <div className="result-info-container second-info flex-content two-fifth p-a-5">
-                        <h4 className="inner-title h6 m-b-4">Ratings by category</h4>
-                        <div className="statics-chart-container chart-secondary flex-container">
-                        <div className="two-third p-r-5 bar-chart-container">
-                            <p className="chart-general-info">
-                            <span className="h4">3900</span> <span className="text-grey fs-7">Followers</span>
-                            </p>
-                            <BarsChart classname="m-t-2" data={this.state.chartData2} color="#F0166D"/>
-                        </div>
-                        <div className="one-third donut-chart-container">
-                            <p className="chart-general-info">
-                            <span className="h4">3900</span> <span className="text-grey fs-7">Followers</span>
-                            </p>
-                            <DonutChart value={+Math.random().toFixed(2)} color="#F0166D" />
-                        </div>
-                        </div>
-                    </div>
-                    <div className="flex-content one-fifth p-a-5">
-                        <ul className="terms-list fs-7 fw-semibold text-center">
-                            {termsList}
-                        </ul>
-                    </div>
                     </section>
                     <section className="bottom-section-container p-a-5">
                         <h4 className="section-title fs-5 fw-bold m-b-4">Support Request</h4>
