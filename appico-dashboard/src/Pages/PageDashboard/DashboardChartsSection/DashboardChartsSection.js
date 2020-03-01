@@ -7,7 +7,6 @@ import BarsChart from '../../../components/Charts/BarsChart/BarsChart';
 const DashboardChartsSection = props => {
     const componentClasses = `statics-chart-container flex-container ${props.classname ? props.classname : ''}`;
 
-    console.log('From charts section');
     return (
         <div className={componentClasses}>
             <div className="two-third p-r-5 bar-chart-container">

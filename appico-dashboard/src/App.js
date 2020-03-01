@@ -18,11 +18,6 @@ function App() {
   // State
     const [collapsedSidebar, setCollapsedSidebar] = useState(true);
 
-
-    // Global css classes
-    const navClasses = [];
-    if (collapsedSidebar) navClasses.push('sidebar-collapsed');
-
     // Header navigation object
     const headerNav = [
         {name: 'Overview', path: '/'},
@@ -39,12 +34,14 @@ function App() {
         {name: 'Settings', icon: 'settings', path: 'settings'}
     ];
 
+    // Sidenave toggle css classes
+    const navClasses = (collapsedSidebar) ? 'sidebar-collapsed' : '';
 
+    // Toggle collapse sibar action
     const collapseSidebarHandler = () => setCollapsedSidebar(!collapsedSidebar);
 
-
     return (
-        <div className={navClasses.join(' ')}>
+        <div className={navClasses}>
             <Header nav={headerNav} premium={true} />
             <Sidenav nav={sidebarNav} toggle={true} togglecollapse={collapseSidebarHandler} />
 

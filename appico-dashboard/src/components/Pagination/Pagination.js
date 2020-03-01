@@ -42,7 +42,7 @@ const Pagination = props => {
 };
 
 Pagination.propTypes = {
-    pagiantion: PropTypes.objectOf({
+    pagiantion: PropTypes.shape({
         current: PropTypes.number,
         limit: PropTypes.number,
         total: PropTypes.number,

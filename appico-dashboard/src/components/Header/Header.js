@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {Link} from '@reach/router';
+import PropTypes from 'prop-types';
 
 import SvgIcon from '../SvgIcon/SvgIcon';
 import HeaderLink from './HeaderLink/HeaderLink';
@@ -73,5 +74,16 @@ const Header = (props) => {
         </header>
     );
 }
+
+Header.propTypes = {
+    premium: PropTypes.bool,
+    nav: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            state: PropTypes.object
+        })
+    )
+};
 
 export default Header;

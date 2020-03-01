@@ -122,21 +122,25 @@ class PageDashboard extends Component {
         const searchParams = this.getSearchParams();
 
         // Get data for table
-        const startPage = (!!searchParams && !!searchParams.p) ? +searchParams.p : 1;
-        const startPagination = {
-            ...this.state.pagination,
-            current: startPage
+        const startPage = (!!searchParams && !!searchParams.p) ? +searchParams.p : this.state.pagination.current;
+        if (startPage !== this.state.pagination.current) {
+            const startPagination = {
+                ...this.state.pagination,
+                current: startPage
+            }
+            this.setState({pagination: startPagination});
         }
-        this.setState({pagination: startPagination});
         this.getTableData(startPage);
     }
 
     // Update lifecicle hook
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
+
         // Get new page title
         if (this.props.location.state && this.props.location.state.sectionTitle !== this.state.pageTitle) {
             this.setState({pageTitle: this.props.location.state.sectionTitle});
         }
+
 
         // Get page from route
         const searchParams = this.getSearchParams();

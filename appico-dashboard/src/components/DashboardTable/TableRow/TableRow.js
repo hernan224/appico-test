@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TableRow = ({data}) => {
     const parsedHour = data.time.getHours().toString();
@@ -17,6 +18,18 @@ const TableRow = ({data}) => {
             <td>{statusLabel}</td>
         </tr>
     );
+};
+
+TableRow.propTypes = {
+    data : PropTypes.shape({
+        id: PropTypes.number,
+        status: PropTypes.string,
+        name: PropTypes.string,
+        email: PropTypes.string,
+        phone: PropTypes.string,
+        city: PropTypes.string,
+        time: PropTypes.instanceOf(Date)
+    })
 };
 
 export default TableRow;

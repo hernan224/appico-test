@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TableHeader from './TableHeader/TableHeader';
 import TableRow from './TableRow/TableRow';
@@ -28,5 +29,19 @@ const DashboardTable = (props) => {
         </table>
     );
 };
+
+DashboardTable.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            status: PropTypes.string,
+            name: PropTypes.string,
+            email: PropTypes.string,
+            phone: PropTypes.string,
+            city: PropTypes.string,
+            time: PropTypes.instanceOf(Date)
+        })
+    )
+}
 
 export default DashboardTable;

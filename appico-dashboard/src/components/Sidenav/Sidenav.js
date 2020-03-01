@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SidenavLink from './SidenavLink/SidenavLink';
 import SvgIcon from '../SvgIcon/SvgIcon';
@@ -28,10 +29,21 @@ const Sidenav = (props) => {
     return (
         <nav className="dashboard-nav">
             {navigation}
-
             {toggleBtn}
         </nav>
     );
 }
+
+Sidenav.propTypes = {
+    toggle: PropTypes.bool,
+    togglecollapse: PropTypes.func,
+    nav: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
 
 export default Sidenav;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SvgIcon = (props) => {
     const iconClasses = `svg-icon ${props.classname}`;
@@ -24,6 +25,11 @@ const SvgIcon = (props) => {
         }
 
         return null;
+}
+
+SvgIcon.propTypes = {
+    icon: PropTypes.string.isRequired,
+    className: PropTypes.string
 }
 
 export default SvgIcon;

@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import PropTypes from 'prop-types';
 
 import loading from './Loading.module.css';
 
@@ -18,5 +19,9 @@ const Loading = (props) => {
         </div>
     );
 };
+
+Loading.propTypes = {
+    color: PropTypes.string
+}
 
 export default Loading;
